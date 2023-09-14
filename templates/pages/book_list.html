@@ -10,12 +10,10 @@
     {% block content %}
         <a href="{% url 'home' %}">Home</a>
         {% for book in book_list %}
-            <div>
-                <h2><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2></br>
-                <h4>{{ book.subtitle }}</h4>
-                <h4>{{ book.authors }}</h4>
-                <h4>{{ book.publisher }}</h4>
-            </div>
+                <p><h2><a href="{% url 'book_detail' book.pk %}">Title: {{ book.title }}</a></h2></p>
+                &emsp;<a>Subtitle: {{ book.subtitle }}</a></br>
+                &emsp;<a>Authors: {{ book.authors }}</a></br>
+                &emsp;<a>Publisher: {{ book.publisher }}</a></br></br>
         {% endfor %}
     {% endblock content %}
 </body>
