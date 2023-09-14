@@ -8,9 +8,13 @@
 
 <body>
     {% block content %}
+        <a href="{% url 'home' %}">Home</a>
         {% for book in book_list %}
             <div>
-                <h2><a href="">{{ book.title }}</a></h2>
+                <h2><a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a></h2></br>
+                <h4>{{ book.subtitle }}</h4>
+                <h4>{{ book.authors }}</h4>
+                <h4>{{ book.publisher }}</h4>
             </div>
         {% endfor %}
     {% endblock content %}

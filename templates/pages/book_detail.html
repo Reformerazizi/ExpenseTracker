@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+<html>
+
+<head>
+    <title>{% block title %}{{ book.title }}{% endblock title %}</title>
+</head>
+
+<body>
+    {% block content %}
+        <div>
+            <h2>Title: {{ book.title }}</h2></br>
+            <h3>Subtitle: {{ book.subtitle }}</h3></br>
+            <h4>Authors: {{ book.authors }}</h4></br>
+            <h4>Publisher: {{ book.publisher }}</h4></br>
+            <h4>Published date: {{ book.published_date }}</h4></br>
+            <h4>Category: {{ book.category }}</h4></br>
+            <h4>Distrubution expense: {{ book.distrubution_expense }}</h4></br>
+            <a href="{{request.META.HTTP_REFERER|escape}}">Back</a>                    
+        </div>
+        <a href="{% url 'home' %}">Home</a>
+    {% endblock content %}
+</body>
+
+</html>
