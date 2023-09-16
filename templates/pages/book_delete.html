@@ -1,6 +1,6 @@
 {% extends '_base.html' %}
 
-<html>
+<html lang="en">
 
 <head>
     {% block title %}Delete Book{% endblock title %}
@@ -9,10 +9,11 @@
 <body>
     {% block content %}
         <h1>Delete post</h1>
-        <form action="" method="post">
+        <form class="form-inline mt-2 mt-md-0" action="" method="post">
             {% csrf_token %}
             <p>Are you sure you want to delete "{{ book.title }}"?</p>
-            <input type="submit" value="Confirm">
+            <input class="btn btn-danger" type="submit" value="Confirm">
+            <a class="btn btn-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a>
         </form>
     {% endblock content %}
 </body>

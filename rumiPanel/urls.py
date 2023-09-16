@@ -6,6 +6,8 @@ from .views import (
     BookCreateView,
     BookUpdateView,
     BookDeleteView,
+    SearchResultsListView,
+    SearchBoxTemplateView,
 )
 
 urlpatterns = [
@@ -15,4 +17,6 @@ urlpatterns = [
     path('BookCreate/', BookCreateView.as_view(), name='book_create' ),
     path('Book/<int:pk>/edit/', BookUpdateView.as_view(), name='book_edit'),
     path('Book/<int:pk>/delete/', BookDeleteView.as_view(), name='book_delete'),
+    path('search/', SearchResultsListView.as_view(), name='search_results'),
+    path('searchforcalculation/', SearchBoxTemplateView.as_view(), name='book_search')
 ]

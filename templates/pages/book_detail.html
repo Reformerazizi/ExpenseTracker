@@ -1,6 +1,7 @@
 {% extends "_base.html" %}
+{% load crispy_forms_tags %}
 
-<html>
+<html lang="en">
 
 <head>
     <title>{% block title %}{{ book.title }}{% endblock title %}</title>
@@ -15,12 +16,11 @@
             <h4>Publisher: {{ book.publisher }}</h4>
             <h4>Published date: {{ book.published_date }}</h4>
             <h4>Category: {{ book.category }}</h4>
-            <h4>Distrubution expense: {{ book.distrubution_expense }}</h4>
-            <a href="{% url 'book_edit' book.pk %}">+ Edit Book Information</a></br></br>
-            <a href="{% url 'book_delete' book.pk %}">+ Delete Book</a></br></br>
-            <a href="{{request.META.HTTP_REFERER|escape}}">Back</a>                    
+            <h4>Distrubution expense: {{ book.distrubution_expense }}</h4></br></br>
+            <a class="btn btn-primary" href="{% url 'book_edit' book.pk %}">+ Edit Book Information</a></br></br>
+            <a class="btn btn-danger" href="{% url 'book_delete' book.pk %}">+ Delete Book</a></br></br>
+            <a class="btn btn-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a>                    
         </div>
-        <a href="{% url 'home' %}">Home</a>
     {% endblock content %}
 </body>
 

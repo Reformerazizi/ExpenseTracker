@@ -1,6 +1,7 @@
 {% extends '_base.html' %}
+{% load crispy_forms_tags %}
 
-<html>
+<html lang="en">
 
 <head>
     <title>{% block title %}New Book{% endblock title %}</title>
@@ -10,13 +11,11 @@
     {% block content %}
         <div>
             <h1>New Book</h1>
-            <form action="" method="post">
+            <form class="form-inline mt-2 mt-md-0" action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Save">
+                {{  form|crispy }}
+                <input class="btn btn-success" type="submit" value="Save">
             </form>
-            <a href="{% url 'book_list' %}">List of Books</a></br>
-            <a href="{% url 'home' %}">Home</a>
         <div>
     {% endblock content %}
 <body>

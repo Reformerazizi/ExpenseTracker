@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+
+<html lang="en">
+
+<head>
+    {% block title %}Distributin calculate{% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+        <h1>Search in titles:</h1>
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+            <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"></br>
+            <input class="btn btn-success" type="submit" value="Search">
+            <a class="btn btn-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a>
+        </form>
+    {% endblock content %}
+</body>
+
+</html>

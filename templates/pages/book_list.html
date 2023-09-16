@@ -1,6 +1,7 @@
 {% extends "_base.html" %}
 
-<html>
+
+<html lang="en">
 
 <head>
     <title>{% block title %}Books{% endblock title %}</title>
@@ -8,12 +9,11 @@
 
 <body>
     {% block content %}
-        <a href="{% url 'home' %}">Home</a>
         {% for book in book_list %}
-                <p><h2><a href="{% url 'book_detail' book.pk %}">Title: {{ book.title }}</a></h2></p>
+                <p><h2><a class="btn btn-primary" href="{% url 'book_detail' book.pk %}">Title: {{ book.title }}</a></h2></p>
                 &emsp;<a>Subtitle: {{ book.subtitle }}</a></br>
                 &emsp;<a>Authors: {{ book.authors }}</a></br>
-                &emsp;<a>Publisher: {{ book.publisher }}</a></br></br>
+                &emsp;<a>Publisher: {{ book.distrubution_expense }}</a></br></br>
         {% endfor %}
     {% endblock content %}
 </body>

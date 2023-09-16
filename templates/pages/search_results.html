@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+
+
+<html lang="en">
+
+<head>
+    <title>{% block title %}Search{% endblock title %}</title>
+</head>
+
+<body>
+    {% block content %}
+        <h1>Search Results</h1>
+        {% for item in book_items %}
+                <p><h2><a class="btn btn-primary" href="{{ item.get_absolute_url }}">
+                    Book: {{ item.title }}</a></h2></p>
+                &emsp;<a>Subtitle: {{ item.subtitle }}</a></br>
+                &emsp;<a>Authors: {{ item.authors }}</a></br>
+                &emsp;<a>Publisher: {{ item.publisher }}</a></br>
+                &emsp;<a>Distribution expense: {{ item.publisher }}</a></br>
+        {% endfor %}
+    {% endblock content %}
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 
 <html>
 
-<head>
+<head lang="en">
     <title>{% block title %}Home{% endblock title %}</title>
 </head>
 
@@ -11,10 +11,9 @@
         <div>
             <p><h2>Admin dashboard</h2></p>
             <p>
-                &emsp;<a href="{% url 'book_create' %}">Add new book information</a></br></br>
-                &emsp;<a href="{% url 'book_list' %}">List of books</a></br></br>
-                &emsp;<a>Update or Delete books</a></br></br>
-                &emsp;<a>Distribution expense calculation (get report)</a></br></br>
+                &emsp;<a class="btn btn-primary" href="{% url 'book_create' %}">Add new book</a></br></br>
+                &emsp;<a class="btn btn-primary" href="{% url 'book_list' %}">List of books</a></br></br>
+                &emsp;<a class="btn btn-primary" href="{% url 'book_search' %}">Distribution expense calculation</a></br></br>
             </p>
         </div>
     {% endblock content %}
