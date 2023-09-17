@@ -10,9 +10,10 @@
 <body>
     {% block content %}
         <h1>Search Results</h1>
+        <a class="btn btn-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a> 
         {% for item in book_items %}
                 <p><h2><a class="btn btn-primary" href="{{ item.get_absolute_url }}">
-                    Book: {{ item.title }}</a></h2></p>
+                    Title: {{ item.title }}</a></h2></p>
                 &emsp;<a>Subtitle: {{ item.subtitle }}</a></br>
                 &emsp;<a>Authors: {{ item.authors }}</a></br>
                 &emsp;<a>Publisher: {{ item.publisher }}</a></br>

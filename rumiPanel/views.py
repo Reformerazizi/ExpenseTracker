@@ -1,9 +1,10 @@
-from typing import Any
-from django.db.models.query import QuerySet
 from .models import Book
 from django.views import generic
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.shortcuts import render
+
+
 
 class HomepageTemplateView(generic.TemplateView):
     template_name = 'home.html'
@@ -45,3 +46,9 @@ class SearchResultsListView(generic.ListView):
 
 class SearchBoxTemplateView(generic.TemplateView):
     template_name = 'pages/book_search.html'
+
+class GetReportTemplateView(generic.TemplateView):
+    template_name = 'pages/get_reports.html'
+
+class PublicationReportChartTemplateView(generic.TemplateView):
+    template_name = 'pages/chart_publication.html'
