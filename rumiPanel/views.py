@@ -1,7 +1,8 @@
+from typing import Any
 from .models import Book
 from django.views import generic
 from django.urls import reverse_lazy
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.shortcuts import render
 
 
@@ -49,6 +50,24 @@ class SearchBoxTemplateView(generic.TemplateView):
 
 class GetReportTemplateView(generic.TemplateView):
     template_name = 'pages/get_reports.html'
+
+
+class CategoryChartListView(generic.ListView):
+    model = Book
+    template_name= 'pages/chart_category.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryChartListView, self).get_context_data(**kwargs)
+        context["dictCategory"] = Book.objects.values('category').annotate(count=Count('category'))
+        return context
+    
+    
+
+""" def category_report_chart(request):
+    dictCategory = Book.objects.values('category').annotate(count=Count('category'))
+    return render(request, 'pages/chart_category.html', {'dictCategory': dictCategory}) """
+
+
 
 class PublicationReportChartTemplateView(generic.TemplateView):
     template_name = 'pages/chart_publication.html'
