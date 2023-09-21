@@ -6,6 +6,7 @@ $ pip install -r reqirements.txt
 Now to import existing data from company spreadsheet that is in folder named "Spreadsheet" in project base dir, make postgres database:
 
 $ sudo -i -u postgres
+
 $ createdb <database_name>
 
 Now go to psql command line:
