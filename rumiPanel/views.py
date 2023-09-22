@@ -95,8 +95,8 @@ def category_chart_report(request):
     report_list = []
     report = []
     final_report = []
-    category_list = []
-    count_list = []
+    key_list = []
+    value_list = []
     i = 0
     k = 0
     l = 0
@@ -118,16 +118,56 @@ def category_chart_report(request):
         i = i + 2
     
     while( k<(len(final_report)-1) ):
-        category_list.append(final_report[k])
+        key_list.append(final_report[k])
         k = k + 2
     
     while( l<(len(final_report)-1) ):
-        count_list.append(final_report[l+1])
+        value_list.append(final_report[l+1])
         l = l + 2
         
-    return render(request, 'pages/chart_category.html', 
-                  {"final_report": final_report, "category_list": category_list, "count_list": count_list})
+    return render(request, 'pages/chart_category.html', {"key_list": key_list, "value_list": value_list})
 
+def publisher_chart_report(request):
+
+    dictPublisher = Book.objects.values('publisher').annotate(count=Count('publisher'))
+
+    report_list_tuples = []
+    report_list = []
+    report = []
+    final_report = []
+    key_list = []
+    value_list = []
+    i = 0
+    k = 0
+    l = 0
+
+    for c1 in range(0, len(dictPublisher)-1):
+        j = list(dictPublisher[c1].items())
+        report_list_tuples.append(j)
+
+    for c2 in report_list_tuples:
+        for i1 in c2:
+            report_list.append(i1)
+
+    for c3 in report_list:
+        for i2 in c3:
+            report.append(i2)
+        
+    while( i<(len(report)-1) ):
+        final_report.append(report[i+1])
+        i = i + 2
+    
+    while( k<(len(final_report)-1) ):
+        key_list.append(final_report[k])
+        k = k + 2
+    
+    while( l<(len(final_report)-1) ):
+        value_list.append(final_report[l+1])
+        l = l + 2
+
+    len_of_lists = len(key_list)
+
+    return render(request, 'pages/chart_publisher.html', { "key_list": key_list,"value_list": value_list})
 
 class PublicationReportChartTemplateView(generic.TemplateView):
     template_name = 'pages/chart_publication.html'

@@ -1,10 +1,10 @@
-{% extends '_base.html'%}
+{% extends "_base.html" %}
 
 <head>
-    {% block title %}Cetegory based chart{% endblock title %}
+    {% block title %}Publisher based chart{% endblock title %}
 </head>
 
-<body>  
+<body>
     {% block scripts %}
         <script>
         // jquery function
@@ -17,6 +17,7 @@
                     datasets: [{
                         label: 'number of books',
                         data: [{% for data in value_list %}{{data}},{% endfor %}],
+                        borderWidth: 1
                     }]
                 },
             });
@@ -33,27 +34,12 @@
                         datasets: [{
                             label: 'number of books',
                             data: [{% for data in value_list %}{{data}},{% endfor %}],
+                            borderWidth: 1
                         }]
                     },
                 });
             });
-        </script>
-        <script>
-            // jquery function
-            $(document).ready(function(){
-                var ctx = document.getElementById('myChart_3').getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'radar',
-                    data: {
-                        labels: [{% for data in key_list %} '{{data}}', {% endfor %}],
-                        datasets: [{
-                            label: 'number of books',
-                            data: [{% for data in value_list %}{{data}},{% endfor %}],
-                        }]
-                    },
-                });
-            });
-        </script>
+            </script>
     {% endblock scripts %}
 
     {% block content %}
@@ -62,15 +48,16 @@
         <div>
             <a class="btn btn-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a></br>
             <h2>Doughnut chart</h2></br>
-            <canvas id="myChart_1" width="400" height="100"></canvas>  
-        </div></br></br>  
+            <canvas id="myChart_1" width="400" height="100"></canvas>
+            
+        </div></br>  
         <div>
             <h2>Bar chart</h2></br>
-            <canvas id="myChart_2" width="400" height="100"></canvas> 
-        </div></br></br>
-        <div>
-            <h2>Radar chart</h2></br>
-            <canvas id="myChart_3" width="400" height="100"></canvas> 
-        </div>
+            <canvas id="myChart_2" width="400" height="100"></canvas>
+            
+        </div> 
     {% endblock content %}
+    {% comment %} {% block content %}
+        {{ len_of_lists }}
+    {% endblock content %} {% endcomment %}
 </body>
