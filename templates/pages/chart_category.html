@@ -15,16 +15,17 @@
 
     {%block scripts%}
         <script>
+
             // jquery function
             $(document).ready(function(){
                     var ctx = document.getElementById('myChart').getContext('2d');
                     var myChart = new Chart(ctx, {
                         type: 'doughnut',
                         data: {
-                            labels: [{%for data in dictCategory%} {{ data.keys }}, {%endfor%}] //loop through queryset, 
-                            datasets: [{
-                                label: '# of users',
-                                data: [{%for data in dictCategory%}{{ data.values }},{%endfor%}],
+                            labels: ,
+                            datasets: ,
+                                label: '',
+                                data: ,
                                 backgroundColor: [
                                     'rgba(255, 99, 132, 0.2)', 
                                     'rgba(54, 162, 235, 0.2)',
@@ -56,13 +57,12 @@
         </script>
     {%endblock scripts%}
 
-</body>
- {% endcomment %}
+</body> {% endcomment %}
 
 
 <body>
     {% block content %}
-        {% for a in dictCategory %}
+        {% for a in report %}
             <h2>{{ a }}</h2>        
         {% endfor %}
     {% endblock content %}

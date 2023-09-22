@@ -10,10 +10,11 @@
 <body>
     {% block content %}
         {% for book in book_list %}
-                <p><h2><a class="btn btn-primary" href="{% url 'book_detail' book.pk %}">Title: {{ book.title }}</a></h2></p>
+                <p><h2>Title: <a class="btn btn-primary" href="{% url 'book_detail' book.pk %}"> {{ book.title }}</a></h2></p>
                 &emsp;<a>Subtitle: {{ book.subtitle }}</a></br>
                 &emsp;<a>Authors: {{ book.authors }}</a></br>
-                &emsp;<a>Publisher: {{ book.distrubution_expense }}</a></br></br>
+                &emsp;<a>Publisher: {{ book.publisher }}</a></br>
+                &emsp;<a>Distribution Expense: {{ book.distrubution_expense }}</a></br></br>
         {% endfor %}
     {% endblock content %}
 </body>
