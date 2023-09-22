@@ -19,23 +19,34 @@ report_list_tuples = []
 report_list = []
 report = []
 final_report = []
+category_list = []
+count_list = []
+l = 0
+i = 0
+k = 0
 
-for i in range(0, len(dictCategory)-1):
-    j = list(dictCategory[i].items())
+for c1 in range(0, len(dictCategory)-1):
+    j = list(dictCategory[c1].items())
     report_list_tuples.append(j)
 
-for i in report_list_tuples:
-    for item in i:
-        report_list.append(item)
+for c2 in report_list_tuples:
+    for i1 in c2:
+        report_list.append(i1)
 
-for i in report_list:
-    for item in i:
-        report.append(item)
-
-i = 0
+for c3 in report_list:
+    for i2 in c3:
+        report.append(i2)
  
 while(i<(len(report)-1)):
     final_report.append(report[i+1])
     i = i + 2
  
-print(final_report)
+while( k<(len(final_report)-1) ):
+    category_list.append(final_report[k])
+    k = k + 2
+
+while( l<(len(final_report)-1) ):
+        count_list.append(final_report[l+1])
+        l = l + 2
+        
+print(count_list)

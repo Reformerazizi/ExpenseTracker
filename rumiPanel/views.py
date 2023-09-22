@@ -52,7 +52,7 @@ class GetReportTemplateView(generic.TemplateView):
     template_name = 'pages/get_reports.html'
 
 
-class CategoryChartListView(generic.ListView):
+""" class CategoryChartListView(generic.ListView):
     model = Book
     template_name= 'pages/chart_category.html'
     context_object_name = 'items'
@@ -85,8 +85,49 @@ class CategoryChartListView(generic.ListView):
             i = i + 2
 
         context['report'] = final_report
-        return context
+        return context """
     
+def category_chart_report(request):
+
+    dictCategory = Book.objects.values('category').annotate(count=Count('category'))
+
+    report_list_tuples = []
+    report_list = []
+    report = []
+    final_report = []
+    category_list = []
+    count_list = []
+    i = 0
+    k = 0
+    l = 0
+
+    for c1 in range(0, len(dictCategory)-1):
+        j = list(dictCategory[c1].items())
+        report_list_tuples.append(j)
+
+    for c2 in report_list_tuples:
+        for i1 in c2:
+            report_list.append(i1)
+
+    for c3 in report_list:
+        for i2 in c3:
+            report.append(i2)
+        
+    while( i<(len(report)-1) ):
+        final_report.append(report[i+1])
+        i = i + 2
+    
+    while( k<(len(final_report)-1) ):
+        category_list.append(final_report[k])
+        k = k + 2
+    
+    while( l<(len(final_report)-1) ):
+        count_list.append(final_report[l+1])
+        l = l + 2
+        
+    return render(request, 'pages/chart_category.html', 
+                  {"final_report": final_report, "category_list": category_list, "count_list": count_list})
+
 
 class PublicationReportChartTemplateView(generic.TemplateView):
     template_name = 'pages/chart_publication.html'

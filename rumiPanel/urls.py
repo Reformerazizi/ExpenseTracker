@@ -10,7 +10,6 @@ from .views import (
     SearchResultsListView,
     SearchBoxTemplateView,
     GetReportTemplateView,
-    CategoryChartListView
 )
 
 urlpatterns = [
@@ -23,5 +22,5 @@ urlpatterns = [
     path('search/', SearchResultsListView.as_view(), name='search_results'),
     path('searchforcalculation/', SearchBoxTemplateView.as_view(), name='book_search'),
     path('getReports/', GetReportTemplateView.as_view(), name='get_reports'),
-    path('categoryChartReport/', CategoryChartListView.as_view(), name='chart_category')
+    path('categoryChartReport/', views.category_chart_report, name='chart_category')
 ]

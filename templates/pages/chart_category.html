@@ -1,69 +1,52 @@
 {% extends '_base.html'%}
 
-
 <head>
     {% block title %}Cetegory based chart{% endblock title %}
 </head>
 
-{% comment %} <body>
+<body>  
+    {% block scripts %}
+        <script>
+        // jquery function
+        $(document).ready(function(){
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for data in category_list %} '{{data}}', {% endfor %}],
+                    datasets: [{
+                        label: 'number of books',
+                        data: [{% for data in count_list %}{{data}},{% endfor %}],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)', 
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(54, 162, 64, 0.2)',
+                            'rgba(255, 148, 64, 0.2)',
+                            'rgba(75, 175, 192, 0.2)',
+                            'rgba(255, 130, 64, 0.2)',
+                            'rgba(54, 158, 64, 0.2)',
+                            'rgba(255, 125, 64, 0.2)',
+                            'rgba(75, 165, 192, 0.2)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+            });
+        });
+        </script>
+    {% endblock scripts %}
 
-    {%block content%}
+    {% block content %}
         <!-- displaying the chart -->
         <!-- you can also play around with the width and height to increase or decrease the chart size -->
-        <canvas id="myChart" width="400" height="100"></canvas>  
-    {%endblock content%}
-
-    {%block scripts%}
-        <script>
-
-            // jquery function
-            $(document).ready(function(){
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ,
-                            datasets: ,
-                                label: '',
-                                data: ,
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)', 
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                    'rgba(255, 159, 64, 0.2)'
-                                ],
-                                borderColor: [
-                                    'rgba(255, 99, 132, 1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                    'rgba(255, 159, 64, 1)'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                });
-            });
-        </script>
-    {%endblock scripts%}
-
-</body> {% endcomment %}
-
-
-<body>
-    {% block content %}
-        {% for a in report %}
-            <h2>{{ a }}</h2>        
-        {% endfor %}
+        <div>
+            <a class="btn btn-primary" href="{{request.META.HTTP_REFERER|escape}}">Back</a></br>
+            <canvas id="myChart" width="400" height="100"></canvas>
+            
+        </div>  
     {% endblock content %}
 </body>
